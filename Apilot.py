@@ -50,9 +50,7 @@ class Apilot(Plugin):
         content = e_context["context"].content.strip()
         logger.debug("[Apilot] on_handle_context. content: %s" % content)
 
-        if content == "aa":
-            reply = self.create_reply(ReplyType.TEXT, "aa...")
-            e_context["reply"] = reply
+        if content == "黑丝":
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
 
