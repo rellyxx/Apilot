@@ -49,8 +49,7 @@ class Apilot(Plugin):
             return
         content = e_context["context"].content.strip()
         logger.debug("[Apilot] on_handle_context. content: %s" % content)
-
-        if content == "黑丝" or content == "白丝" or content == "美女" or content == "点歌" or content == "猜拳" or content == "签到" or content == "抽签":
+        if "黑丝" in content or "白丝" in content or "美女" in content or "点歌" in content or "猜拳" in content or "签到" in content or "抽签" in content:
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
 
