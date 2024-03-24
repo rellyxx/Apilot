@@ -50,6 +50,12 @@ class Apilot(Plugin):
         content = e_context["context"].content.strip()
         logger.debug("[Apilot] on_handle_context. content: %s" % content)
 
+        if content == "aa":
+            reply = self.create_reply(ReplyType.TEXT, "aa...")
+            e_context["reply"] = reply
+            e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
+            return
+
         if content == "早报":
             news = self.get_morning_news(self.alapi_token, self.morning_news_text_enabled)
             reply_type = ReplyType.IMAGE_URL if self.is_valid_url(news) else ReplyType.TEXT
