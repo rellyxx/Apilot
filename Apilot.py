@@ -298,7 +298,7 @@ class Apilot(Plugin):
             try:
                 horoscope_data = self.make_request(url, method="POST", headers=headers, data=payload)
                 if isinstance(horoscope_data, dict) and horoscope_data.get('code') == 200:
-                    data = horoscope_data['data']['day']
+                    data = horoscope_data['data']['tomorrow']
 
                     # 格式化并返回 ALAPI 提供的星座信息
                     result = (
