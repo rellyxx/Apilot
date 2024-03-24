@@ -53,14 +53,14 @@ class Apilot(Plugin):
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
 
-        if content == "早报":
+        if  "早报" in content or "日报" in content:
             news = self.get_morning_news(self.alapi_token, self.morning_news_text_enabled)
             reply_type = ReplyType.IMAGE_URL if self.is_valid_url(news) else ReplyType.TEXT
             reply = self.create_reply(reply_type, news)
             e_context["reply"] = reply
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
-        if content == "摸鱼":
+        if content == "摸鱼" or content == "摸鱼日历" or content == "摸鱼人日历":
             moyu = self.get_moyu_calendar()
             reply_type = ReplyType.IMAGE_URL if self.is_valid_url(moyu) else ReplyType.TEXT
             reply = self.create_reply(reply_type, moyu)
