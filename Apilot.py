@@ -319,6 +319,7 @@ class Apilot(Plugin):
                         f"工作：{data['work_text']}\n"
                         f"财运：{data['money_text']}\n"
                         f"健康：{data['health_text']}\n"
+                        f"说谢谢～[菜刀]\n"
                     )
                     return result
                 else:
