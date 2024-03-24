@@ -49,8 +49,12 @@ class Apilot(Plugin):
             return
         content = e_context["context"].content.strip()
         logger.debug("[Apilot] on_handle_context. content: %s" % content)
-        
 
+        # 走茉莉云
+        if "黑丝" in content or "白丝" in content or "美女" in content or "点歌" in content or "猜拳" in content or "签到" in content or "抽签" in content or "倒计时" in content:
+            e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
+            return
+        
         if  "早报" in content or "日报" in content:
             news = self.get_morning_news(self.alapi_token, self.morning_news_text_enabled)
             reply_type = ReplyType.IMAGE_URL if self.is_valid_url(news) else ReplyType.TEXT
@@ -59,9 +63,6 @@ class Apilot(Plugin):
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
         
-        if "黑丝" in content or "白丝" in content or "美女" in content or "点歌" in content or "猜拳" in content or "签到" in content or "抽签" in content or "倒计时" in content:
-            e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
-            return
         if content == "摸鱼" or content == "摸鱼日历" or content == "摸鱼人日历":
             moyu = self.get_moyu_calendar()
             reply_type = ReplyType.IMAGE_URL if self.is_valid_url(moyu) else ReplyType.TEXT
