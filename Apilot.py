@@ -113,7 +113,7 @@ class Apilot(Plugin):
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
 
-        horoscope_match = re.match(r'^([\u4e00-\u9fa5]{2}座)$', content)
+        horoscope_match =  re.match(r'^([\u4e00-\u9fa5]{2}座(?:运势)?)$', content)
         if horoscope_match:
             if content in ZODIAC_MAPPING:
                 zodiac_english = ZODIAC_MAPPING[content]
