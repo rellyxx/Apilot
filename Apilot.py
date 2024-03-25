@@ -113,14 +113,17 @@ class Apilot(Plugin):
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
 
+
+        constellation = next((item for item in fortuneArr if content.find(item['label']) > -1 or content.find(item['label1']) > -1), None)
+
         horoscope_match =  re.match(r'^([\u4e00-\u9fa5]{2}座(?:运势)?)$', content)
         if horoscope_match:
-            if content in ZODIAC_MAPPING:
-                zodiac_english = ZODIAC_MAPPING[content]
-                content = self.get_horoscope(self.alapi_token, zodiac_english)
-                reply = self.create_reply(ReplyType.TEXT, content)
-            else:
-                reply = self.create_reply(ReplyType.TEXT, "请重新输入星座名称")
+            # if constellation in ZODIAC_MAPPING:
+            zodiac_english = constellation['value']
+            content = self.get_horoscope(self.alapi_token, zodiac_english)
+            reply = self.create_reply(ReplyType.TEXT, content)
+            # else:
+            #     reply = self.create_reply(ReplyType.TEXT, "请重新输入星座名称")
             e_context["reply"] = reply
             e_context.action = EventAction.BREAK_PASS  # 事件结束，并跳过处理context的默认逻辑
             return
@@ -583,3 +586,66 @@ hot_trend_types = {
     "IT科技": "itInfo"
 
 }
+
+fortuneArr = [
+    {
+        'label': '白羊座',
+        'label1': '白羊',
+        'value': 'aries',
+    },
+    {
+        'label': '金牛座',
+        'label1': '金牛',
+        'value': 'taurus',
+    },
+    {
+        'label': '双子座',
+        'label1': '双子',
+        'value': 'gemini',
+    },
+    {
+        'label': '巨蟹座',
+        'label1': '巨蟹',
+        'value': 'cancer',
+    },
+    {
+        'label': '狮子座',
+        'label1': '狮子',
+        'value': 'leo',
+    },
+    {
+        'label': '处女座',
+        'label1': '处女',
+        'value': 'virgo',
+    },
+    {
+        'label': '天秤座',
+        'label1': '天秤',
+        'value': 'libra',
+    },
+    {
+        'label': '天蝎座',
+        'label1': '天蝎',
+        'value': 'scorpio',
+    },
+    {
+        'label': '射手座',
+        'label1': '射手',
+        'value': 'sagittarius',
+    },
+    {
+        'label': '摩羯座',
+        'label1': '摩羯',
+        'value': 'capricorn',
+    },
+    {
+        'label': '水瓶座',
+        'label1': '水瓶',
+        'value': 'aquarius',
+    },
+    {
+        'label': '双鱼座',
+        'label1': '双鱼',
+        'value': 'pisces',
+    },
+]
