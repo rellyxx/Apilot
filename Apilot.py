@@ -117,7 +117,7 @@ class Apilot(Plugin):
         constellation = next((item for item in fortuneArr if content.find(item['label']) > -1 or content.find(item['label1']) > -1), None)
 
         horoscope_match =  re.match(r'^([\u4e00-\u9fa5]{2}座(?:运势)?)$', content)
-        if horoscope_match:
+        if constellation and 'value' in constellation:
             # if constellation in ZODIAC_MAPPING:
             zodiac_english = constellation['value']
             content = self.get_horoscope(self.alapi_token, zodiac_english)
