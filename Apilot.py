@@ -312,7 +312,9 @@ class Apilot(Plugin):
                     # 格式化并返回 ALAPI 提供的星座信息
                     result = (
                         # f"📅 日期：{data['date']}\n\n"
-                        f"💡【每日建议】\n宜：{data['yi']}\n忌：{data['ji']}\n\n"
+                        # f"💡【每日建议】\n宜：{data['yi']}\n忌：{data['ji']}\n\n"
+                        f"💡宜：{data['yi']}\n忌：{data['ji']}\n\n"
+                        
                         # f"📊【运势指数】\n"
                         # f"总运势：{data['all']}\n"
                         # f"爱情：{data['love']}\n"
@@ -320,13 +322,13 @@ class Apilot(Plugin):
                         # f"财运：{data['money']}\n"
                         # f"健康：{data['health']}\n\n"
                         # f"🔔【提醒】：{data['notice']}\n\n"
-                        f"🍀【幸运提示】\n数字：{data['lucky_number']}\n"
-                        f"颜色：{data['lucky_color']}\n"
-                        f"星座：{data['lucky_star']}\n\n"
-                        f"✍【简评】\n总运：{data['all_text']}\n\n"
-                        # f"爱情：{data['love_text']}\n\n"
+                        # f"🍀【幸运提示】\n数字：{data['lucky_number']}\n"
+                        # f"颜色：{data['lucky_color']}\n"
+                        f"幸运星座：{data['lucky_star']}\n\n"
+                        # f"✍【简评】\n总运：{data['all_text']}\n\n"
+                        f"爱情：{data['love_text']}\n\n"
                         # f"工作：{data['work_text']}\n\n"
-                        # f"财运：{data['money_text']}\n\n"
+                        f"财运：{data['money_text']}\n\n"
                         # f"健康：{data['health_text']}\n"
                         # f"说谢谢～[菜刀]\n"
                     )
