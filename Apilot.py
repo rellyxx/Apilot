@@ -324,11 +324,11 @@ class Apilot(Plugin):
                         f"颜色：{data['lucky_color']}\n"
                         f"星座：{data['lucky_star']}\n\n"
                         f"✍【简评】\n总运：{data['all_text']}\n\n"
-                        f"爱情：{data['love_text']}\n\n"
-                        f"工作：{data['work_text']}\n\n"
-                        f"财运：{data['money_text']}\n\n"
-                        f"健康：{data['health_text']}\n"
-                        f"说谢谢～[菜刀]\n"
+                        # f"爱情：{data['love_text']}\n\n"
+                        # f"工作：{data['work_text']}\n\n"
+                        # f"财运：{data['money_text']}\n\n"
+                        # f"健康：{data['health_text']}\n"
+                        # f"说谢谢～[菜刀]\n"
                     )
                     return result
                 else:
